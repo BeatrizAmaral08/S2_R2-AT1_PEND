@@ -1,8 +1,25 @@
-const botao = document.getElementById("btnAdicionar");
-botao.addEventListener("click", function(){
-    let texto= document.getElementById("inputItem").value;
-    let li = document.createElement("li");
-    li.textContent = texto;
-    document.getElementById("lista").appendChild(li);
-    
+let inputTarefa = document.getElementById("inputTarefa");
+let btnAdicionar = document.querySelector("#btnAdicionar");
+let listaTarefas = document.querySelector("#listaTarefas");
+let mensagem = document.querySelector("#mensagem");
+
+btnAdicionar.addEventListener("click", () => {
+
+let texto = inputTarefa.value;
+if(texto === ""){
+
+mensagem.innerText = "Tarefa vazia!";
+mensagem.className = "text-danger fw-bold";
+
+return;
+}
+
+let li = document.createElement("li");
+
+li.innerText = texto;
+li.className = "list-group-item";
+listaTarefas.appendChild(li);
+inputTarefa.value = "";
+mensagem.innerText = "Tarefa adicionada!";
+mensagem.className = "text-success fw-bold";
 })
