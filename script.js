@@ -1,25 +1,33 @@
-let inputTarefa = document.getElementById("inputTarefa");
-let btnAdicionar = document.querySelector("#btnAdicionar");
-let listaTarefas = document.querySelector("#listaTarefas");
-let mensagem = document.querySelector("#mensagem");
+const botao = document.getElementById("btnAdicionar");
 
-btnAdicionar.addEventListener("click", () => {
+botao.addEventListener("click", function(){
 
-let texto = inputTarefa.value;
-if(texto === ""){
-
-mensagem.innerText = "Tarefa vazia!";
-mensagem.className = "text-danger fw-bold";
-
-return;
-}
+let tarefa = document.getElementById("inputTarefa").value;
 
 let li = document.createElement("li");
 
-li.innerText = texto;
-li.className = "list-group-item";
-listaTarefas.appendChild(li);
-inputTarefa.value = "";
-mensagem.innerText = "Tarefa adicionada!";
-mensagem.className = "text-success fw-bold";
-})
+li.className = "list-group-item d-flex justify-content-between";
+
+let span = document.createElement("span");
+
+span.textContent = tarefa;
+
+let botaoRemover = document.createElement("button");
+
+botaoRemover.textContent = "Remover";
+
+botaoRemover.className = "btn btn-danger btn-sm";
+
+botaoRemover.addEventListener("click", function(){
+
+li.remove();
+
+});
+
+li.appendChild(span);
+
+li.appendChild(botaoRemover);
+
+document.getElementById("listaTarefas").appendChild(li);
+
+});
