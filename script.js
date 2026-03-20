@@ -8,18 +8,21 @@ let li = document.createElement("li");
 
 li.className = "list-group-item d-flex justify-content-between align-items-center";
 
-// lado esquerdo
+ // Cria uma div para agrupar checkbox + texto
 let divEsquerda = document.createElement("div");
 
+ // Cria o checkbox
 let checkbox = document.createElement("input");
 checkbox.type = "checkbox";
 checkbox.className = "form-check-input me-2";
 
+ // Cria o texto da tarefa
 let span = document.createElement("span");
 span.textContent = tarefa;
 
-checkbox.addEventListener("change", function(){
+checkbox.addEventListener("change", function(){ //marcar/desmarcar o checkbox
 
+    // Se estiver marcado, risca o texto, ou se desmarcar, remove o risco
 if(checkbox.checked){
 span.style.textDecoration = "line-through";
 }else{
@@ -42,6 +45,7 @@ li.remove();
 
 });
 
+ // Adiciona botão remover
 li.appendChild(divEsquerda);
 li.appendChild(botaoRemover);
 
